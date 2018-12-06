@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">PackageDemo</string>
+    <string name="uses_permission">com.qinlei.packagedemo.JPUSH_MESSAGE</string>
+    <string name="domain">域名</string>
+    <string name="permission">权限</string>
+    <string name="signature">签名</string>
+    <string name="channel">渠道</string>
+    <string name="applicationId">包名</string>
+    <string name="resource">资源</string>
+</resources>

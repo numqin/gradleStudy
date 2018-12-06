@@ -1,0 +1,97 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        signing0 {
+            keyAlias 'qinlei0'
+            keyPassword 'qinlei0'
+            storeFile file('F:/android_project/PackageDemo/package0.jks')
+            storePassword 'qinlei0'
+        }
+        signing1 {
+            keyAlias 'qinlei1'
+            keyPassword 'qinlei1'
+            storeFile file('F:/android_project/PackageDemo/package1.jks')
+            storePassword 'qinlei1'
+        }
+        signing2 {
+            keyAlias 'qinlei2'
+            keyPassword 'qinlei2'
+            storeFile file('F:/android_project/PackageDemo/package2.jks')
+            storePassword 'qinlei2'
+        }
+    }
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.qinlei.packagedemo"
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "mode"
+
+    productFlavors {
+        mode0 {
+            dimension "mode"
+            signingConfig signingConfigs.signing0
+            buildConfigField("String", "DOMAIN", '"http://domian"')
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "fuwuqi", permission_name: "com.qinlei.packagedemo.JPUSH_MESSAGE"]
+        }
+        mode0_xiaomi {
+            dimension "mode"
+            signingConfig signingConfigs.signing0
+            buildConfigField("String", "DOMAIN", '"http://domian"')
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi", permission_name: "com.qinlei.packagedemo.JPUSH_MESSAGE"]
+        }
+        mode0_huawei {
+            dimension "mode"
+            signingConfig signingConfigs.signing0
+            buildConfigField("String", "DOMAIN", '"http://domian"')
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "huawei", permission_name: "com.qinlei.packagedemo.JPUSH_MESSAGE"]
+        }
+        mode0_baidu {
+            dimension "mode"
+            signingConfig signingConfigs.signing0
+            buildConfigField("String", "DOMAIN", '"http://domian"')
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu", permission_name: "com.qinlei.packagedemo.JPUSH_MESSAGE"]
+        }
+        mode0_360 {
+            dimension "mode"
+            signingConfig signingConfigs.signing0
+            buildConfigField("String", "DOMAIN", '"http://domian"')
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "360", permission_name: "com.qinlei.packagedemo.JPUSH_MESSAGE"]
+        }
+        mode1 {
+            dimension "mode"
+            applicationId 'com.qinlei.package1'
+            signingConfig signingConfigs.signing1
+            buildConfigField("String", "DOMAIN", '"http://domian1"')
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "fuwuqi", permission_name: "com.qinlei.package1.JPUSH_MESSAGE"]
+        }
+        mode2 {
+            dimension "mode"
+            applicationId 'com.qinlei.package2'
+            signingConfig signingConfigs.signing2
+            buildConfigField("String", "DOMAIN", '"http://domian2"')
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "fuwuqi", permission_name: "com.qinlei.package2.JPUSH_MESSAGE"]
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
